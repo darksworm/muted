@@ -1,0 +1,12 @@
+[submodule "test/external/trompeloeil"]
+	path = test/external/trompeloeil
+	url = https://github.com/rollbear/trompeloeil.git
+[submodule "test/external/Catch2"]
+	path = test/external/Catch2
+	url = https://github.com/catchorg/Catch2.git
+[submodule "app/external/tray"]
+	path = src/external/tray/src
+	url = https://github.com/zserge/tray.git
+[submodule "src/external/glfw"]
+	path = src/external/glfw
+	url = https://github.com/glfw/glfw.git
