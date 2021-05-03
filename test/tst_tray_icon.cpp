@@ -1,7 +1,7 @@
 #include <catch2/catch.hpp>
 #include <trompeloeil.hpp>
 
-#include "../lib/TrayIcon.h"
+#include "../lib/tray/TrayIcon.h"
 #include "../src/tray_icon.h"
 
 using namespace trompeloeil;

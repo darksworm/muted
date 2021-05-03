@@ -1,11 +1,16 @@
 set(BINARY ${CMAKE_PROJECT_NAME}_test)
 
 add_executable(
-        tests main.cpp
+        tests
+        main.cpp
         trompeloeil_catch.hpp
-        tst_OSTypeProvider.cpp
-        ../lib/OSTypeProvider.h
-        tst_TrayIcon.cpp tst_tray_icon.cpp)
+        tst_TrayIcon.cpp
+        tst_tray_icon.cpp
+        tst_BashCodeExecutor.cpp
+        tst_AMixerMicrophoneController.cpp
+        ../lib/microphone/AMixer/AMixerMicrophoneController.cpp
+        ../lib/microphone/AMixer/AMixerMicrophoneStateProvider.cpp
+)
 
 add_subdirectory(external/trompeloeil)
 target_link_libraries(tests PRIVATE trompeloeil)

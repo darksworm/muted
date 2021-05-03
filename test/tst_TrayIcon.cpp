@@ -2,7 +2,7 @@
 #include <trompeloeil.hpp>
 
 #include <external/tray/TrayIconProvider.h>
-#include "../lib/CrossPlatformTrayIcon.h"
+#include "../lib/tray/CrossPlatformTrayIcon.h"
 
 using namespace GUI;
 using namespace trompeloeil;

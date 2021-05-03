@@ -1,7 +1,7 @@
 #include "external/tray/CrossPlatformTrayIconProvider.h"
-#include "../lib/TrayIcon.h"
+#include "../lib/tray/TrayIcon.h"
 #include "tray_icon.h"
-#include "../lib/CrossPlatformTrayIcon.h"
+#include "../lib/tray/CrossPlatformTrayIcon.h"
 
 int main(int argc, char *argv[])
 {
