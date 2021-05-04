@@ -40,6 +40,16 @@ namespace GUI
         {
             iconProvider.exit();
         }
+
+        void clearMenuItems() override
+        {
+            menuItems.clear();
+        }
+
+        void update() override
+        {
+            iconProvider.update(&tray);
+        }
     };
 }
 

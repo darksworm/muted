@@ -1,18 +1,32 @@
 #ifndef TRAY_ICON_SRC_H
 #define TRAY_ICON_SRC_H
 
-void initializeTrayIcon(GUI::TrayIcon &trayIcon)
+#include "lib/microphone/MicrophoneController.h"
+#include "lib/microphone/MicrophoneStateProvider.h"
+
+using namespace Microphone;
+using namespace GUI;
+
+namespace Muted
 {
-    trayIcon.addTrayMenuItem(
-        {
-            .text = "Quit",
-            .disabled = 0,
-            .cb = [](tray_menu *) { exit(1); },
-            .context = nullptr
-        }
-    );
+    struct TrayIconContext
+    {
+        TrayIcon *trayIcon;
+        MicrophoneController *controller;
+        MicrophoneStateProvider *stateProvider;
+    };
 
-    trayIcon.build();
+    void updateTrayIcon(TrayIconContext *context);
+
+    TrayIconContext *newTrayIcon(TrayIcon *icon, MicrophoneController *controller, MicrophoneStateProvider *provider);
+
+    namespace Callbacks
+    {
+        void unmuteFromTrayMenu(tray_menu *menuItem);
+
+        void muteFromTrayMenu(tray_menu *menuItem);
+
+        void exitFromTrayMenu(tray_menu *menuItem);
+    }
 }
-
 #endif

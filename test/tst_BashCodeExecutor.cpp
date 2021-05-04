@@ -1,6 +1,6 @@
 #include <catch2/catch.hpp>
 
-#include "../lib/BashCodeExecutor.h"
+#include "lib/BashCodeExecutor.h"
 
 TEST_CASE("BashCodeExecutor", "BashCodeExecutor")
 {

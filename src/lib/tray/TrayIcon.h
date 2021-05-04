@@ -1,10 +1,10 @@
 #ifndef MUTED_TRAYICON_H
 #define MUTED_TRAYICON_H
 
-#include <external/tray/TrayIconProvider.h>
 #include <vector>
 #include <string>
-#include <external/tray/src/tray.h>
+#include <lib/external/tray/src/tray.h>
+#include <lib/tray/TrayIconProvider.h>
 
 namespace GUI
 {
@@ -18,6 +18,10 @@ namespace GUI
         virtual int loop(int blocking) = 0;
 
         virtual void exit() = 0;
+
+        virtual void clearMenuItems() = 0;
+
+        virtual void update() = 0;
     };
 }
 

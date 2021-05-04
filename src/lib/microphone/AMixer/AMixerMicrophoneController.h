@@ -2,6 +2,9 @@
 #include "../../CodeExecutor.h"
 #include "AMixerMicrophoneStateProvider.h"
 
+#include <memory>
+#include <utility>
+
 namespace Microphone
 {
     class AMixerMicrophoneController : MicrophoneController

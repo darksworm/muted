@@ -1,6 +1,8 @@
 #ifndef MUTED_MICROPHONECONTROLLER_H
 #define MUTED_MICROPHONECONTROLLER_H
 
+#include <stdexcept>
+
 namespace Microphone
 {
     class MicrophoneControlException : std::exception {};

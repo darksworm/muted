@@ -2,8 +2,8 @@
 	path = test/external/trompeloeil
 	url = https://github.com/rollbear/trompeloeil.git
 [submodule "app/external/tray"]
-	path = src/external/tray/src
+	path = src/lib/external/tray/src
 	url = https://github.com/zserge/tray.git
 [submodule "src/external/glfw"]
-	path = src/external/glfw
+	path = src/lib/external/glfw
 	url = https://github.com/glfw/glfw.git

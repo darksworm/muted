@@ -1,4 +1,4 @@
-add_library(tray src/tray.h TrayIconProvider.h CrossPlatformTrayIconProvider.h)
+add_library(tray src/tray.h)
 
 set(LIBAPPINDICATOR_MINIMUM 0.4.90)
 set_target_properties(tray PROPERTIES LINKER_LANGUAGE C)

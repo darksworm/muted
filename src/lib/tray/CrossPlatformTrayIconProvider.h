@@ -2,7 +2,7 @@
 #define MUTED_CROSS_PLATFORM_TRAY_ICON_PROVIDER_H
 
 #include "TrayIconProvider.h"
-#include "src/tray.h"
+#include "lib/external/tray/src/tray.h"
 
 namespace GUI
 {

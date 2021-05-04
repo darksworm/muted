@@ -1,8 +1,8 @@
 #include <catch2/catch.hpp>
 #include <trompeloeil.hpp>
 
-#include <external/tray/TrayIconProvider.h>
-#include "../lib/tray/CrossPlatformTrayIcon.h"
+#include "lib/tray/TrayIconProvider.h"
+#include "lib/tray/CrossPlatformTrayIcon.h"
 
 using namespace GUI;
 using namespace trompeloeil;
@@ -16,9 +16,38 @@ public:
     MAKE_MOCK0 (exit, void(), override);
 };
 
+TEST_CASE("CrossPlatformTrayIcon", "[CrossPlatformTrayIcon]")
+{
+    SECTION("clearMenuItems removes all menu items")
+    {
+        ProviderMock providerMock;
+        CrossPlatformTrayIcon icon(providerMock);
+
+        icon.addTrayMenuItem({.text = "test", .checked = true});
+        icon.addTrayMenuItem({.text = "other", .checked = false});
+        icon.clearMenuItems();
+
+        struct tray initStructure;
+
+        REQUIRE_CALL(providerMock, init(ANY(void * )))
+            .LR_SIDE_EFFECT(initStructure = *(tray *) _1)
+            .RETURN(0)
+            .TIMES(1);
+
+        icon.build();
+
+        // null menu item = terminating menu item
+        CHECK(initStructure.menu->checked == 0);
+        CHECK(initStructure.menu->disabled == 0);
+        CHECK(initStructure.menu->text == nullptr);
+        CHECK(initStructure.menu->cb == nullptr);
+        CHECK(initStructure.menu->context == nullptr);
+    }
+}
+
 TEST_CASE("TrayIcon", "[TrayIcon]")
 {
-    SECTION("build calls provider.init")
+    SECTION("build calls stateProvider.init")
     {
         ProviderMock providerMock;
         REQUIRE_CALL(providerMock, init(ne(nullptr)))
@@ -29,7 +58,7 @@ TEST_CASE("TrayIcon", "[TrayIcon]")
         icon.build();
     }
 
-    SECTION("data passed in addTrayMenuItem passed to provider.init")
+    SECTION("data passed in addTrayMenuItem passed to stateProvider.init")
     {
         ProviderMock providerMock;
         CrossPlatformTrayIcon icon(providerMock);
@@ -83,7 +112,7 @@ TEST_CASE("TrayIcon", "[TrayIcon]")
         CHECK(initStructure.menu->disabled == 0);
         CHECK(initStructure.menu->checked == 0);
         CHECK(initStructure.menu->cb == nullptr);
-        CHECK(initStructure.menu->context== nullptr);
+        CHECK(initStructure.menu->context == nullptr);
     }
 
     SECTION("sets icon to icon.png")
@@ -125,9 +154,29 @@ TEST_CASE("TrayIcon", "[TrayIcon]")
         ProviderMock providerMock;
         CrossPlatformTrayIcon icon(providerMock);
 
-        REQUIRE_CALL(providerMock, exit())
-            .TIMES(1);
+        REQUIRE_CALL(providerMock, exit()).TIMES(1);
 
         icon.exit();
+    }
+
+    SECTION("update delegates to provider")
+    {
+        ProviderMock providerMock;
+        CrossPlatformTrayIcon icon(providerMock);
+
+        struct tray initStructure;
+
+        REQUIRE_CALL(providerMock, init(_))
+            .RETURN(0)
+            .TIMES(1);
+
+        REQUIRE_CALL(providerMock, update(ANY(void * )))
+            .LR_SIDE_EFFECT(initStructure = *(tray *) _1)
+            .TIMES(1);
+
+        icon.build();
+        icon.update();
+
+        CHECK(initStructure.icon == "icon.png");
     }
 }

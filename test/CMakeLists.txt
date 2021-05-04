@@ -5,11 +5,12 @@ add_executable(
         main.cpp
         trompeloeil_catch.hpp
         tst_TrayIcon.cpp
-        tst_tray_icon.cpp
         tst_BashCodeExecutor.cpp
         tst_AMixerMicrophoneController.cpp
-        ../lib/microphone/AMixer/AMixerMicrophoneController.cpp
-        ../lib/microphone/AMixer/AMixerMicrophoneStateProvider.cpp
+        tst_TrayIconMenuContext.cpp
+        ../src/lib/microphone/AMixer/AMixerMicrophoneController.cpp
+        ../src/lib/microphone/AMixer/AMixerMicrophoneStateProvider.cpp
+        ../src/tray_icon.cpp
 )
 
 add_subdirectory(external/trompeloeil)

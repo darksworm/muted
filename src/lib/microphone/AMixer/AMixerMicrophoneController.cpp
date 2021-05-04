@@ -1,5 +1,3 @@
-#include <memory>
-#include <utility>
 #include "AMixerMicrophoneController.h"
 
 namespace Microphone

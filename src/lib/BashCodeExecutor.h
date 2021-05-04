@@ -2,6 +2,8 @@
 #define MUTED_BASHCODEEXECUTOR_H
 
 #include "CodeExecutor.h"
+#include <array>
+#include <stdexcept>
 
 class BashCodeExecutor : public CodeExecutor
 {

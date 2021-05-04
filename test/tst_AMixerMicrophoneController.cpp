@@ -1,8 +1,8 @@
 #include <catch2/catch.hpp>
 #include <trompeloeil.hpp>
 
-#include "../lib/CodeExecutor.h"
-#include "../lib/microphone/AMixer/AMixerMicrophoneController.h"
+#include "lib/CodeExecutor.h"
+#include "lib/microphone/AMixer/AMixerMicrophoneController.h"
 
 class MockCodeExecutor : public CodeExecutor
 {
